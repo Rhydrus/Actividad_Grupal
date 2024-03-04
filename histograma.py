@@ -1,13 +1,23 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+import math
 
-import matplotlib.pyplot as plt
-import seaborn as sns
+def Matriz(data):
+    Filas_count = len(data.columns)
+    Filas = Filas_count
+    contador = 1
+    Columnas = 0
+    while Filas_count >= 1:
+        Filas_count = Filas_count / contador
+        contador += 1
+        Columnas += 1
 
+    num_rows = math.ceil(Filas / Columnas)
+    num_cols = math.floor(Columnas)
+    return num_rows, num_cols
+def histogram_all(data):
 
-def crear_histogram(data):
-    num_rows = 5
-    num_cols = 6
+    num_rows,num_cols = Matriz(data)
 
     fig, axes = plt.subplots(num_rows, num_cols, figsize=(20, 15))
     axes = axes.ravel()  # Flatten the axes array
@@ -24,9 +34,9 @@ def crear_histogram(data):
     plt.tight_layout()
     plt.show()
 
-def boxplot(data):
-    num_rows = 5
-    num_cols = 6
+def boxplot_all(data):
+
+    num_rows, num_cols = Matriz(data)
 
     fig, axes = plt.subplots(num_rows, num_cols, figsize=(20, 15))
     axes = axes.ravel()  # Flatten the axes array
